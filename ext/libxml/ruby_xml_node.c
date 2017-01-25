@@ -572,9 +572,9 @@ static VALUE rxml_node_to_s(int argc, VALUE *argv, VALUE self)
   xmlOutputBufferFlush(output);
 
   if (output->conv)
-    result = rb_str_new2((const char*) output->conv->content);
+    result = rb_str_new2((const char*) xmlBufContent(output->conv));
   else
-    result = rb_str_new2((const char*) output->buffer->content);
+    result = rb_str_new2((const char*) xmlBufContent(output->buffer));
 
   xmlOutputBufferClose(output);
   
